@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <title>A-Frame　チュートリアル</title>
+  </head>
+  <body>
+    <a-scene>
+      <a-sky id="sky" color=#ECECEC></a-sky>
+      <a-plane position="0, 0, -4" width="4" height="4" rotation="-90 0 0"  color=#7BC8A4></a-plane>
+      <a-box  id="rotation_box" position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" height="1" depth="1" width="1" ></a-box>
+      <a-sphere id="moving_sphere" position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      <a-text id="front_text" position="0 1.7 -2" value="Hello, World!" align="center" color="#000" scale="1 1 1"></a-text>
+    </a-scene>
+  </body>
+  <script>
+    //可読性をあげるために並び替えている
+    const $moving_sphere = document.getElementById("moving_sphere");
+    const $rotation_box = document.getElementById("rotation_box");
+    const $front_text = document.getElementById("front_text");
+    const $sky = document.getElementById("sky");
+    const random = Math.random();
+
+    $moving_sphere.object3D.position.set(0, (random)*2 + 1, -5);
+    $rotation_box.object3D.rotation.set(0, random*360, 0);
+
+    $front_text.setAttribute("value","Hello, World! \n random num:"+String(random.toFixed(2)));
+    $sky.setAttribute("color","rgb("+String(parseInt(255-Math.random()*100))+","+String(parseInt(255-Math.random()*100))+","+String(parseInt(255-Math.random()*100))+")")
+  </script>
+</html>
